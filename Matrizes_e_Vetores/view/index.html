@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Projeto de Algebra Linear com Matrizes e Vetores"/>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="../static/css/style.css">
+        <title>Álgebra — Matrizes e Vetores</title>
+    </head>
+
+    <body>
+        <div class="app">
+            <!-- LADO ESQUERDO: RESULTADO -->
+            <main class="resultado">
+                <h1>Álgebra Linear</h1>
+                <p class="subtitulo">Resultado da operação</p>
+
+                <div id="resultadoConteudo" class="resultado-conteudo">
+                    <div class="placeholder">
+                        Selecione uma operação no painel ao lado para começar.
+                    </div>
+                </div>
+            </main>
+        
+            <!-- LADO DIREITO: CONTROLES -->
+            <div class="painel">
+                <h2>Operações</h2>
+
+                <div class="operacoes">
+                    <button class="operacao-btn ativo" onclick="selecionarOperacao('matriz', this)">Matriz</button>
+                    <button class="operacao-btn" onclick="selecionarOperacao('vetor', this)">Vetor</button>
+                </div>
+
+                <!-- MATRIZ -->
+                <section id="secaoMatriz" class="secao ativa">
+                    <h3>Verificar Simetria e Assimetria da matriz</h3>
+
+                    <div class="dimensoes">
+                        <div>
+                            <label for="linhas">Linhas</label>
+                            <input id="linhas" type="number" min="1" value="2"
+                                onchange="gerarMatriz()">
+                        </div>
+
+                        <div>
+                            <label for="colunas">Colunas</label>
+                            <input id="colunas" type="number" min="1" value="2"
+                                onchange="gerarMatriz()">
+                        </div>
+                    </div>
+
+                    <div id="matrizInputs" class="matriz-inputs"></div>
+
+                    <button class="botao-principal" onclick="verificarMatriz()">
+                        Verificar matriz
+                    </button>
+
+                    <div class="explicacao">
+                        <p>A matriz será analisada para determinar se é <b>simétrica</b>,
+                        <b>antissimétrica</b> ou nenhuma das duas.</p>
+                    </div>
+
+                    <div id="erroMatriz" class="erro"></div>
+                </section>
+
+                <!-- VETOR -->
+                <section id="secaoVetor" class="secao">
+                    <h3>Operação com vetores no R²</h3>
+                    
+                    <div class="vetor">
+                        <h3>Vetor A</h3>
+
+                        <div class="coordenadas">
+                            <div>
+                                <label for="ax">X</label>
+                                <input id="ax" type="number" value="3">
+                            </div>
+
+                            <div>
+                                <label for="ay">Y</label>
+                                <input id="ay" type="number" value="2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vetor">
+                        <h3>Vetor B</h3>
+
+                        <div class="coordenadas">
+                            <div>
+                                <label for="bx">X</label>
+                                <input id="bx" type="number" value="1">
+                            </div>
+
+                            <div>
+                                <label for="by">Y</label>
+                                <input id="by" type="number" value="4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="operacaoVetor">Operação</label>
+                    
+                    <select id="operacaoVetor">
+                        <option value="soma">A + B</option>
+                        <option value="subtracao">A - B</option>
+                    </select>
+
+                    <button class="botao-principal" onclick="calcularVetores()">Calcular resultante</button>
+
+                    <div class="explicacao">
+                        Os dois vetores partem da origem (0, 0).
+                        O backend em Python poderá gerar o gráfico 2D contendo os vetores e a resultante.
+                    </div>
+
+                    <div id="erroVetor" class="erro"></div>
+                </section>
+            </div> 
+        </div>
+    
+        <script src="../static/js/script.js"></script>
+    </body>
+</html>
